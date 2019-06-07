@@ -49,10 +49,11 @@ Future<Map<String, List<String>>> fetchData() async {
 main() async {
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
-    print('${record.level.name}: ${record.time}: ${record.message}');
+    print('${record.level.name}: ${record.time}: ${record.loggerName}: ${record.message}');
   });
   final Logger log = new Logger('main');
 
+  log.info('fetching...');
   Map<String, List<String>> seen = await fetchData();
 
   log.info('saving to result.json...');
